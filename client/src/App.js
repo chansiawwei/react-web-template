@@ -8,7 +8,7 @@ function App() {
   const [data, setData] = React.useState(null);
 
   React.useEffect(() => {
-    fetch("http://localhost:3001/api")
+    fetch("https://react-template-web.herokuapp.com/api")
       .then((res) => {
         console.log(res);
         return res.json();
