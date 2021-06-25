@@ -1,28 +1,16 @@
-// client/src/App.js
-
-import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
-
+import Homepage from "./pages/homepage/homepage.component";
+import LandingPage from "./pages/landing/landing.component";
+import { Switch, Route, Redirect } from "react-router-dom";
+import Auth from "./pages/auth/auth.component";
 function App() {
-  const [data, setData] = React.useState(null);
-
-  React.useEffect(() => {
-    fetch("https://react-template-web.herokuapp.com/api")
-      .then((res) => {
-        console.log(res);
-        return res.json();
-      })
-      .then((data) => setData(data.message));
-  }, []);
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>{!data ? "Loading..." : data}</p>
-        <p>Added to Heroku</p>
-      </header>
+    <div>
+      <Switch>
+        <Route exact path="/" component={Homepage} />
+        <Route path="/auth" component={Auth} />
+        <Route path="/landing" component={LandingPage} />
+      </Switch>
     </div>
   );
 }
